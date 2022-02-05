@@ -1,17 +1,17 @@
 # This is a sample Python script.
 
 import logging
-
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from typing import TypeVar
+
 import jproperties as jproperties
 from flask import Flask, jsonify
-
 import testmodule
-import dbmodule
+from dbmodule import Task
+from daomodule import Dao
 
 app = Flask(__name__)
-
 offers = [
     {
         'id': 1,
@@ -44,7 +44,9 @@ def get_offers():
 @app.route(config.get('api-path').data + '/fake-create', methods=['GET'])
 def get_fake_create():
     logging.info("fake-create invoked")
-    dbmodule.add()
+    dao = Dao[Task]()
+    # dao.create(Task(id=50))
+    dao.update(Task(id=50, population_processed_failed=1))
     return jsonify({'offers': offers})
 
 
@@ -65,5 +67,3 @@ def perform_external_function_with_param():
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     app.run(debug=True)
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
