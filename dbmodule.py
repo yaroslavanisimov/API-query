@@ -2,6 +2,7 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from django.db.models.expressions import Col
 from sqlalchemy import create_engine, Integer, Column, String, Sequence, ForeignKey, DateTime
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
@@ -18,9 +19,14 @@ class User(Base):
     name = Column(String)
     surname = Column(String)
     e_mail = Column(String)
+    password = Column(String)
     registration_date = Column(DateTime)
     expiration_date = Column(DateTime)
     api_token = Column(String)
+
+    def __init__(self, e_mail, password):
+        self.e_mail = e_mail
+        self.password = password
 
     def __repr__(self) -> str:
         return "User(id = " + str(self.id) + ", name = " + self.name + ", surname = " + self.surname \
@@ -84,4 +90,3 @@ def add():
 
 def print_all():
     print(session.query(Task).filter_by(name='Task 1').first())
-
