@@ -31,6 +31,8 @@
 
 
 
+
+
     </style>
 
 
@@ -43,7 +45,7 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">API-QUE</a>
+            <a class="navbar-brand" href="#">Fixed navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -72,44 +74,22 @@
 <!-- Begin page content -->
 <main class="flex-shrink-0">
     <div class="container">
-        <h1 class="mt-5">Executed tasks</h1>
-        <form action="form" method="get">
-            <button class="btn btn-outline-success" type="submit" style="margin-bottom: 10px">Add new</button>
+        <form action="tutorial/api/v2/proc-loader" method="post">
+            <h1 class="h3 mb-3 fw-normal" style="margin-top: 15px">Create new process</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="taskName" name="taskName" placeholder="Some Process Name">
+                <label for="taskName">Process name</label>
+            </div>
+            <div class="form-floating" style="margin-bottom: 5px">
+                <input type="text" class="form-control" id="taskParam" name="taskParam"
+                       placeholder="Some Process Parameter">
+                <label for="taskParam">Parameters</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-outline-success" type="submit" style="margin-top: 15px">Run</button>
+            <p class="mt-5 mb-3 text-muted"></p>
         </form>
-        <table class="table table-dark">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Creation Date</th>
-                <th scope="col">Finish Date</th>
-                <th scope="col">Population Processed Failed</th>
-                <th scope="col">Population Processed Success</th>
-                <th scope="col">Population size</th>
-                <th scope="col">Status</th>
-                <th scope="col">User</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for entry in lists %}
-            <tr class="table-active">
-                <td>{{entry.id}}</td>
-                <td>{{entry.name}}</td>
-                <td>{{entry.creation_date}}</td>
-                <td>{{entry.finish_date}}</td>
-                <td>{{entry.population_processed_failed}}</td>
-                <td>{{entry.population_processed_success}}</td>
-                <td>{{entry.population_size}}</td>
-                <td>{{entry.status}}</td>
-                <td>{{entry.id_user}}</td>
-            </tr>
-            {% else %}
-            <tr>
-                <td>no entries</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
     </div>
 </main>
 

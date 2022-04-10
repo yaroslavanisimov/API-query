@@ -40,6 +40,7 @@ class Task(Base):
     id = Column(Integer, Sequence('seq_task'), primary_key=True)
     creation_date = Column(DateTime)
     finish_date = Column(DateTime)
+    name = Column(String)
     population_processed_failed = Column(Integer)
     population_processed_success = Column(Integer)
     population_size = Column(Integer)
