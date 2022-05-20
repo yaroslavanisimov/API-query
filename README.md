@@ -1,5 +1,7 @@
 # api-que
 
+API for asynchronous query executor connected with DB
+
 ## High level picture
 ![image](https://user-images.githubusercontent.com/76183614/150941452-df1292a3-626d-484a-97df-63e3bc565f64.png)
 
